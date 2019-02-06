@@ -1,6 +1,16 @@
-<h1>Post</h1>
+omm<h1>Post</h1>
 
 <%=@post.title%>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <%if comment.post_id == @post.id && parent_comment_id == nil %>
+      <li>
+        <a href="<%= comment_url(comment) %>"><%= comment.content %></a> 
+      </li>
+    <%end%>
+  <%end%>
+</ul>
 
 <form action="<%=comments_url%>" method="POST">
   <label>
@@ -8,5 +18,4 @@
   </label>
   
   <input type="submit" name="" value="Create Post">
-  
-</form>
+</form> 

@@ -13,7 +13,8 @@
 class Post < ApplicationRecord 
   validates :title, presence: true 
   
-  belongs_to :user, foreign_key: :author_id  
+  belongs_to :user, foreign_key: :author_id 
   has_many :post_subs 
   has_many :subs, through: :post_subs 
+  has_many :comments, optional: true 
 end 
